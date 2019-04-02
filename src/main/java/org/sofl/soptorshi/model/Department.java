@@ -11,10 +11,26 @@ public class Department {
 
     private String name;
 
+    private String shortName;
+
     private String description;
 
     public Department(){
 
+    }
+
+    public Department(String name, String shortName, String description) {
+        this.name = name;
+        this.shortName = shortName;
+        this.description = description;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
     public Long getId() {
@@ -41,11 +57,13 @@ public class Department {
         this.description = description;
     }
 
+
     @Override
     public String toString() {
         return "Department{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", shortName='" + shortName + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

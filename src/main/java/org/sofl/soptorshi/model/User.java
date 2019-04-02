@@ -1,5 +1,7 @@
 package org.sofl.soptorshi.model;
 
+import org.sofl.soptorshi.model.enums.UserStatus;
+
 import javax.persistence.*;
 import java.time.Instant;
 
@@ -20,7 +22,8 @@ public class User {
     private Instant lastModified;
 
     @Column(name="status")
-    private boolean status;
+    @Enumerated(EnumType.ORDINAL)
+    private UserStatus status;
 
     public User() {
     }
@@ -57,14 +60,13 @@ public class User {
         this.lastModified = lastModified;
     }
 
-    public boolean isStatus() {
+    public UserStatus getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(UserStatus status) {
         this.status = status;
     }
-
 
     @Override
     public String toString() {

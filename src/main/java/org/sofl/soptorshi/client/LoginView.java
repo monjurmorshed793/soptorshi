@@ -1,5 +1,6 @@
 package org.sofl.soptorshi.client;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.login.LoginOverlay;
@@ -17,9 +18,10 @@ public class LoginView extends Div {
         loginOverlay = new LoginOverlay();
         loginOverlay.setOpened(true);
         SecurityContextHolder.clearContext();
-        Image logoImage = new Image();
-        logoImage.setSrc("/icons/seven-oceans.jpg");
-        loginOverlay.setTitle(logoImage);
+//        loginOverlay.setTitle("SEVEN OCEANS FISH PRODUCTION LTD");
+        Component titleComponent = new Image();
+        ((Image) titleComponent).setSrc("img/seven-oceans.jpg");
+        loginOverlay.setTitle(titleComponent);
         loginOverlay.setDescription("Insert Employee Id and Password");
         loginOverlay.setAction("login");
         loginOverlay.addForgotPasswordListener(e->{

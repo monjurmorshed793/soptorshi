@@ -19,6 +19,11 @@ public class Designation {
     public Designation() {
     }
 
+    public Designation(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public Long getId() {
         return id;
     }

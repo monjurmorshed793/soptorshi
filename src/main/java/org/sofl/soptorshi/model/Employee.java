@@ -25,10 +25,14 @@ public class Employee {
     @JoinColumn(name="designation_id")
     @NotNull
     private Designation designation;
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name="role_id")
-    @NotNull
+    @OneToMany
+    @JoinTable(
+            name = "user_role_map",
+            joinColumns = {@JoinColumn(name="employee_id",referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name="role_id", referencedColumnName = "id")}
+    )
     private List<Role> role;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="department_id")
     @NotNull
@@ -43,19 +47,14 @@ public class Employee {
     @NotNull
     private Location location;
 
-    @NotNull
     private String fatherName;
 
-    @NotNull
     private String motherName;
 
-    @NotNull
     private String presentAddress;
 
-    @NotNull
     private String permanentAddress;
 
-    @NotNull
     private LocalDate dateOfBirth;
 
     private String nationalId;
@@ -68,7 +67,7 @@ public class Employee {
 
     private String emergencyContact;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="photo_id")
     private Photo photo;
 

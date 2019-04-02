@@ -105,9 +105,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 "/sw.js",
                 "/offline-page.html",
 
-                // icons and images
+                // icons and img
                 "/icons/**",
-                "/images/**",
+                "/img/**",
 
                 // (development mode) static resources
                 "/frontend/**",
