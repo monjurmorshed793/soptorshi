@@ -25,7 +25,7 @@ public class Employee {
     @JoinColumn(name="designation_id")
     @NotNull
     private Designation designation;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role_map",
             joinColumns = {@JoinColumn(name="employee_id",referencedColumnName = "id")},
@@ -243,29 +243,4 @@ public class Employee {
         this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", employeeId='" + employeeId + '\'' +
-                ", name='" + name + '\'' +
-                ", employmentType=" + employmentType +
-                ", designation=" + designation +
-                ", department=" + department +
-                ", joinDate=" + joinDate +
-                ", wings=" + wings +
-                ", location=" + location +
-                ", fatherName='" + fatherName + '\'' +
-                ", motherName='" + motherName + '\'' +
-                ", presentAddress='" + presentAddress + '\'' +
-                ", permanentAddress='" + permanentAddress + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                ", nationalId='" + nationalId + '\'' +
-                ", tinNumber='" + tinNumber + '\'' +
-                ", contactNumber='" + contactNumber + '\'' +
-                ", bloodGroup=" + bloodGroup +
-                ", emergencyContact='" + emergencyContact + '\'' +
-                ", photo=" + photo +
-                '}';
-    }
 }
