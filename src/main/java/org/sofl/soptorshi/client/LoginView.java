@@ -17,7 +17,7 @@ public class LoginView extends Div {
     public LoginView() {
         loginOverlay = new LoginOverlay();
         loginOverlay.setOpened(true);
-        SecurityContextHolder.clearContext();
+//        SecurityContextHolder.clearContext();
 //        loginOverlay.setTitle("SEVEN OCEANS FISH PRODUCTION LTD");
         Component titleComponent = new Image();
         ((Image) titleComponent).setSrc("img/seven-oceans.jpg");
