@@ -11,9 +11,11 @@ import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.router.Route;
+import com.vaadin.flow.spring.annotation.UIScope;
 import org.sofl.soptorshi.MainView;
 import org.sofl.soptorshi.model.Department;
 import org.sofl.soptorshi.repository.DepartmentRepository;
+import org.sofl.soptorshi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.vaadin.crudui.crud.CrudListener;
@@ -27,6 +29,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Route(value = "department", layout = MainView.class)
+@UIScope
 public class DepartmentView extends VerticalLayout implements CrudListener<Department> {
     private DepartmentRepository departmentRepository;
     private Tabs tabSheet = new Tabs();
@@ -92,9 +95,16 @@ public class DepartmentView extends VerticalLayout implements CrudListener<Depar
 
         Button clearFilters = new Button(null, VaadinIcon.ERASER.create());
         clearFilters.addAttachListener(event-> nameFilter.clear());
+        crud.getCrudLayout().addFilterComponent(clearFilters);
+//        crud.setFindAllOperation(
+//                DataProvider.fromCallbacks(
+//                 query-> nameFilter.getValue().length()==0? departmentRepository.findAll().stream(): departmentRepository.findByNameLike(nameFilter.getValue()).stream(),
+//                 query -> nameFilter.getValue().length()==0? departmentRepository.findAll().size(): departmentRepository.findByNameLike(nameFilter.getValue()).size()
+//                )
+//        );
 
-        crud.setFindAllOperation(() -> {
-            return departmentRepository.findByNameLike(nameFilter.getValue());
+        crud.setFindAllOperation(()->{
+            return departmentRepository.findAll();
         });
 
         return crud;
