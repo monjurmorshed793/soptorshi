@@ -19,6 +19,7 @@ import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
 import org.sofl.soptorshi.client.DepartmentView;
+import org.sofl.soptorshi.client.DesignationView;
 import org.sofl.soptorshi.client.ProfileView;
 import org.sofl.soptorshi.client.RoleView;
 import org.sofl.soptorshi.model.Department;
@@ -49,8 +50,8 @@ public class MainView extends AppLayoutRouterLayout {
         LeftSubMenuBuilder configurationSubMenu = LeftSubMenuBuilder
                 .get("Configuration", VaadinIcon.COG_O.create());
 
-        configurationSubMenu.add(new LeftNavigationComponent("Department", VaadinIcon.FACEBOOK.create(), DepartmentView.class));
-        configurationSubMenu.add(new LeftNavigationComponent("Role", VaadinIcon.SPECIALIST.create(), RoleView.class));
+        configurationSubMenu.add(new LeftNavigationComponent("Department", VaadinIcon.FACTORY.create(), DepartmentView.class));
+        configurationSubMenu.add(new LeftNavigationComponent("Designation", VaadinIcon.SPECIALIST.create(), DesignationView.class));
 
         LeftAppMenuBuilder configurationMenuBar = LeftAppMenuBuilder
                 .get()
