@@ -16,17 +16,17 @@ public class LoginView extends Div {
 
     public LoginView() {
         loginOverlay = new LoginOverlay();
-        loginOverlay.setOpened(true);
 //        SecurityContextHolder.clearContext();
 //        loginOverlay.setTitle("SEVEN OCEANS FISH PRODUCTION LTD");
-        Component titleComponent = new Image();
-        ((Image) titleComponent).setSrc("img/seven-oceans.jpg");
-        loginOverlay.setTitle(titleComponent);
+        Image image = new Image("img/seven-oceans-sm.png","Seven Oceans");
+        image.setMaxHeight("30%");
+        loginOverlay.setTitle(image);
         loginOverlay.setDescription("Insert Employee Id and Password");
         loginOverlay.setAction("login");
         loginOverlay.addForgotPasswordListener(e->{
             Notification.show("Forgot password not yet handled", 2000, Notification.Position.TOP_CENTER);
         });
+        loginOverlay.setOpened(true);
         add(loginOverlay);
     }
 }

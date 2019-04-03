@@ -1,5 +1,6 @@
 package org.sofl.soptorshi;
 
+import com.github.appreciated.app.layout.behaviour.AppLayout;
 import com.github.appreciated.app.layout.behaviour.Behaviour;
 import com.github.appreciated.app.layout.builder.AppLayoutBuilder;
 import com.github.appreciated.app.layout.component.appbar.AppBarBuilder;
@@ -14,6 +15,7 @@ import com.github.appreciated.app.layout.notification.DefaultNotificationHolder;
 import com.github.appreciated.app.layout.notification.component.AppBarNotificationButton;
 import com.github.appreciated.app.layout.router.AppLayoutRouterLayout;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
 import org.sofl.soptorshi.client.DepartmentView;
@@ -42,13 +44,26 @@ public class MainView extends AppLayoutRouterLayout {
         badge = new DefaultBadgeHolder(5);
         LeftNavigationComponent menuEntry = new LeftNavigationComponent("Menu", VaadinIcon.MENU.create(), ProfileView.class);
         badge.bind(menuEntry.getBadge());
-        init(AppLayoutBuilder
+
+
+        LeftSubMenuBuilder configurationSubMenu = LeftSubMenuBuilder
+                .get("Configuration", VaadinIcon.COG_O.create());
+
+        configurationSubMenu.add(new LeftNavigationComponent("Department", VaadinIcon.FACEBOOK.create(), DepartmentView.class));
+        configurationSubMenu.add(new LeftNavigationComponent("Role", VaadinIcon.SPECIALIST.create(), RoleView.class));
+
+        LeftAppMenuBuilder configurationMenuBar = LeftAppMenuBuilder
+                .get()
+                .add(configurationSubMenu.build());
+
+        AppLayoutBuilder appLayoutBuilder = AppLayoutBuilder
                 .get(Behaviour.LEFT_RESPONSIVE_HYBRID)
                 .withTitle("Soptorshi")
                 .withAppBar(AppBarBuilder.get()
-                        .add(new AppBarNotificationButton(VaadinIcon.BELL, notifications))
-                        .build())
-                .withAppMenu(LeftAppMenuBuilder.get()
+                        .add(new AppBarNotificationButton(VaadinIcon.BELL , notifications))
+                        .build());
+        appLayoutBuilder.withAppMenu(configurationMenuBar.build());
+               /* .withAppMenu(LeftAppMenuBuilder.get()
 //                        .addToSection(new MenuHeaderComponent("Menu-Header", "APP_LAYOUT_VERSION", "/img/seven-oceans.jpg"), Section.HEADER)
 //                        .addToSection(new LeftClickableComponent("Clickable Entry", VaadinIcon.COG.create(), clickEvent -> Notification.show("onClick ...")), Section.HEADER)
 //                        .add(new LeftNavigationComponent("Home", VaadinIcon.HOME.create(), DepartmentView.class))
@@ -64,8 +79,8 @@ public class MainView extends AppLayoutRouterLayout {
                                 .build())
 //                        .add(menuEntry)
 //                        .addToSection(new LeftClickableComponent("Clickable Entry", VaadinIcon.COG.create(), clickEvent -> Notification.show("onClick ...")), Section.FOOTER)
-                        .build())
-                .build());
+                        .build());*/
+        init(appLayoutBuilder.build());
     }
 
 }

@@ -1,10 +1,11 @@
 package org.sofl.soptorshi.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name="designation")
-public class Designation {
+public class Designation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

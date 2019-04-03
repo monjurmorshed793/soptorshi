@@ -3,11 +3,12 @@ package org.sofl.soptorshi.model;
 import org.sofl.soptorshi.model.enums.UserStatus;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.Instant;
 
 @Entity
 @Table(name="user")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
