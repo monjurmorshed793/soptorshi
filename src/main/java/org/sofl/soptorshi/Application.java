@@ -1,5 +1,7 @@
 package org.sofl.soptorshi;
 
+import org.apache.catalina.Context;
+import org.apache.catalina.session.StandardManager;
 import org.sofl.soptorshi.config.UserRoles;
 import org.sofl.soptorshi.model.*;
 import org.sofl.soptorshi.model.enums.EmploymentType;
@@ -11,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.embedded.tomcat.TomcatContextCustomizer;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -91,4 +94,6 @@ public class Application extends SpringBootServletInitializer {
             }
         };
     }
+
+
 }

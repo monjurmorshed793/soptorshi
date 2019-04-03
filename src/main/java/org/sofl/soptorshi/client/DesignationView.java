@@ -29,7 +29,7 @@ public class DesignationView extends VerticalLayout implements CrudListener<Desi
     private DesignationRepository designationRepository;
     private Tabs tabSheet = new Tabs();
     private VerticalLayout container = new VerticalLayout();
-    private TextField nameFilter = new TextField();
+    private TextField nameFilter;
 
 
     public DesignationView(@Autowired DesignationRepository designationRepository) {
@@ -81,16 +81,18 @@ public class DesignationView extends VerticalLayout implements CrudListener<Desi
 
         crud.setClickRowToUpdate(true);
         crud.setUpdateOperationVisible(true);
-
+        nameFilter = new TextField();
         nameFilter.setPlaceholder("Filter by designation ...");
         nameFilter.addValueChangeListener(e->{
-            crud.setFindAllOperation(()->designationRepository.findByNameLike(e.getValue()));
+            nameFilterChanged();
+            crud.setFindAllOperation(()->designationRepository.findByNameLike(e.toString()));
         });
         crud.getCrudLayout().addFilterComponent(nameFilter);
 
         Button clearFilters = new Button(null, VaadinIcon.ERASER.create());
         clearFilters.addAttachListener(event->{
             nameFilter.clear();
+            nameFilter.setValue("");
             crud.setFindAllOperation(()->designationRepository.findAll());
         });
         crud.getCrudLayout().addFilterComponent(clearFilters);
@@ -100,6 +102,10 @@ public class DesignationView extends VerticalLayout implements CrudListener<Desi
         });
 
         return crud;
+    }
+
+    private void nameFilterChanged(){
+        System.out.println("Name filter was changed");
     }
 
     @Override
