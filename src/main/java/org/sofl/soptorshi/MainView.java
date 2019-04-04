@@ -17,6 +17,7 @@ import org.sofl.soptorshi.client.configuration.view.DepartmentView;
 import org.sofl.soptorshi.client.configuration.view.DesignationView;
 import org.sofl.soptorshi.client.configuration.view.LocationView;
 import org.sofl.soptorshi.client.configuration.view.RoleView;
+import org.sofl.soptorshi.client.employee.management.EmployeeDetailsView;
 import org.sofl.soptorshi.client.employee.management.EmployeeView;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -60,6 +61,7 @@ public class MainView extends AppLayoutRouterLayout {
                 .get("Employee Management", VaadinIcon.GROUP.create());
 
         employeeManagementSubMenu.add(new LeftNavigationComponent("Employee List", VaadinIcon.BULLETS.create(), EmployeeView.class));
+        employeeManagementSubMenu.add(new LeftNavigationComponent("Employee Details", VaadinIcon.USER.create(), EmployeeDetailsView.class));
 
         leftMenuBar.add(employeeManagementSubMenu.build());
 
