@@ -18,11 +18,9 @@ import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
-import org.sofl.soptorshi.client.DepartmentView;
-import org.sofl.soptorshi.client.DesignationView;
-import org.sofl.soptorshi.client.ProfileView;
-import org.sofl.soptorshi.client.RoleView;
+import org.sofl.soptorshi.client.*;
 import org.sofl.soptorshi.model.Department;
+import org.sofl.soptorshi.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -32,7 +30,7 @@ import com.vaadin.flow.server.PWA;
 import java.security.Provider;
 
 @Route
-@PWA(name = "Project Base for Vaadin Flow with Spring", shortName = "Project Base")
+@PWA(name = "Soptorshi", shortName = "Soptorshi")
 public class MainView extends AppLayoutRouterLayout {
 
     private DefaultNotificationHolder notifications;
@@ -50,8 +48,10 @@ public class MainView extends AppLayoutRouterLayout {
         LeftSubMenuBuilder configurationSubMenu = LeftSubMenuBuilder
                 .get("Configuration", VaadinIcon.COG_O.create());
 
+        configurationSubMenu.add(new LeftNavigationComponent("Role", VaadinIcon.ACCESSIBILITY.create(), RoleView.class));
         configurationSubMenu.add(new LeftNavigationComponent("Department", VaadinIcon.FACTORY.create(), DepartmentView.class));
         configurationSubMenu.add(new LeftNavigationComponent("Designation", VaadinIcon.SPECIALIST.create(), DesignationView.class));
+        configurationSubMenu.add(new LeftNavigationComponent("Location", VaadinIcon.ABSOLUTE_POSITION.create(), LocationView.class));
 
         LeftAppMenuBuilder configurationMenuBar = LeftAppMenuBuilder
                 .get()
