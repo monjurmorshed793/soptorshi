@@ -36,6 +36,7 @@ public class MainView extends AppLayoutRouterLayout {
     private DefaultNotificationHolder notifications;
     private DefaultBadgeHolder badge;
 
+
     public MainView(@Autowired MessageBean bean) {
         notifications = new DefaultNotificationHolder(newStatus->{
 

@@ -1,5 +1,6 @@
 package org.sofl.soptorshi;
 
+import com.vaadin.flow.spring.annotation.VaadinSessionScope;
 import org.apache.catalina.Context;
 import org.apache.catalina.session.StandardManager;
 import org.sofl.soptorshi.config.UserRoles;
