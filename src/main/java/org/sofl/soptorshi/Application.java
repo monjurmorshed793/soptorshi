@@ -12,9 +12,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.autoconfigure.web.embedded.EmbeddedWebServerFactoryCustomizerAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.embedded.tomcat.TomcatContextCustomizer;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -42,6 +44,19 @@ public class Application extends SpringBootServletInitializer {
         return builder.sources(Application.class);
     }
 
+    @Bean
+    public TomcatServletWebServerFactory servletContainer() {
+        TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
+        tomcat.addContextCustomizers(new TomcatContextCustomizer() {
+            @Override
+            public void customize(Context context) {
+                if (context.getManager() instanceof StandardManager) {
+                    ((StandardManager) context.getManager()).setPathname("");
+                }
+            }
+        });
+        return tomcat;
+    }
     @Bean
     @Transactional
     public CommandLineRunner loadData(RoleRepository roleRepository, DepartmentRepository departmentRepository, LocationRepository locationRepository, DesignationRepository designationRepository, EmployeeRepository employeeRepository, UserRepository userRepository){
