@@ -1,4 +1,4 @@
-package org.sofl.soptorshi.client;
+package org.sofl.soptorshi.client.configuration.view;
 
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;

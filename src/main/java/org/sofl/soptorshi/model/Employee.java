@@ -22,7 +22,7 @@ public class Employee implements Serializable {
     @NotNull
     @Enumerated(EnumType.ORDINAL)
     private EmploymentType employmentType;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="designation_id")
     @NotNull
     private Designation designation;
@@ -34,16 +34,16 @@ public class Employee implements Serializable {
     )
     private List<Role> role;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="department_id")
     @NotNull
     private Department department;
 
     private LocalDate joinDate;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="wings_id")
     private Wings wings;
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="location_id")
     @NotNull
     private Location location;

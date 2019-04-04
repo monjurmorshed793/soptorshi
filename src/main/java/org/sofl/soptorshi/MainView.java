@@ -1,33 +1,27 @@
 package org.sofl.soptorshi;
 
-import com.github.appreciated.app.layout.behaviour.AppLayout;
 import com.github.appreciated.app.layout.behaviour.Behaviour;
 import com.github.appreciated.app.layout.builder.AppLayoutBuilder;
+import com.github.appreciated.app.layout.builder.interfaces.NavigationElementContainer;
 import com.github.appreciated.app.layout.component.appbar.AppBarBuilder;
-import com.github.appreciated.app.layout.component.appmenu.MenuHeaderComponent;
-import com.github.appreciated.app.layout.component.appmenu.left.LeftClickableComponent;
 import com.github.appreciated.app.layout.component.appmenu.left.LeftNavigationComponent;
 import com.github.appreciated.app.layout.component.appmenu.left.builder.LeftAppMenuBuilder;
 import com.github.appreciated.app.layout.component.appmenu.left.builder.LeftSubMenuBuilder;
 import com.github.appreciated.app.layout.entity.DefaultBadgeHolder;
-import com.github.appreciated.app.layout.entity.Section;
 import com.github.appreciated.app.layout.notification.DefaultNotificationHolder;
 import com.github.appreciated.app.layout.notification.component.AppBarNotificationButton;
 import com.github.appreciated.app.layout.router.AppLayoutRouterLayout;
-import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
-import com.vaadin.flow.component.notification.Notification;
 import org.sofl.soptorshi.client.*;
-import org.sofl.soptorshi.model.Department;
-import org.sofl.soptorshi.model.Role;
+import org.sofl.soptorshi.client.configuration.view.DepartmentView;
+import org.sofl.soptorshi.client.configuration.view.DesignationView;
+import org.sofl.soptorshi.client.configuration.view.LocationView;
+import org.sofl.soptorshi.client.configuration.view.RoleView;
+import org.sofl.soptorshi.client.employee.management.EmployeeView;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
-
-import java.security.Provider;
 
 @Route
 @PWA(name = "Soptorshi", shortName = "Soptorshi")
@@ -54,9 +48,21 @@ public class MainView extends AppLayoutRouterLayout {
         configurationSubMenu.add(new LeftNavigationComponent("Designation", VaadinIcon.SPECIALIST.create(), DesignationView.class));
         configurationSubMenu.add(new LeftNavigationComponent("Location", VaadinIcon.ABSOLUTE_POSITION.create(), LocationView.class));
 
-        LeftAppMenuBuilder configurationMenuBar = LeftAppMenuBuilder
+
+
+        LeftAppMenuBuilder leftMenuBar = LeftAppMenuBuilder
                 .get()
                 .add(configurationSubMenu.build());
+
+
+
+        LeftSubMenuBuilder employeeManagementSubMenu = LeftSubMenuBuilder
+                .get("Employee Management", VaadinIcon.GROUP.create());
+
+        employeeManagementSubMenu.add(new LeftNavigationComponent("Employee List", VaadinIcon.BULLETS.create(), EmployeeView.class));
+
+        leftMenuBar.add(employeeManagementSubMenu.build());
+
 
         AppLayoutBuilder appLayoutBuilder = AppLayoutBuilder
                 .get(Behaviour.LEFT_RESPONSIVE_HYBRID)
@@ -64,7 +70,10 @@ public class MainView extends AppLayoutRouterLayout {
                 .withAppBar(AppBarBuilder.get()
                         .add(new AppBarNotificationButton(VaadinIcon.BELL , notifications))
                         .build());
-        appLayoutBuilder.withAppMenu(configurationMenuBar.build());
+        appLayoutBuilder.withAppMenu(leftMenuBar.build());
+
+
+
                /* .withAppMenu(LeftAppMenuBuilder.get()
 //                        .addToSection(new MenuHeaderComponent("Menu-Header", "APP_LAYOUT_VERSION", "/img/seven-oceans.jpg"), Section.HEADER)
 //                        .addToSection(new LeftClickableComponent("Clickable Entry", VaadinIcon.COG.create(), clickEvent -> Notification.show("onClick ...")), Section.HEADER)
