@@ -26,7 +26,8 @@ public class LoginView extends Div {
         loginOverlay.addForgotPasswordListener(e->{
             Notification.show("Forgot password not yet handled", 2000, Notification.Position.TOP_CENTER);
         });
-        loginOverlay.setOpened(true);
+
         add(loginOverlay);
+        loginOverlay.setOpened(true);
     }
 }

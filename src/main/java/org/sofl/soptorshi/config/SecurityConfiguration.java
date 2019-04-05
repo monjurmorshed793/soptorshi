@@ -74,12 +74,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 // Restrict access to our application.
                 .and().authorizeRequests()
 
-
                 // Allow all flow internal requests.
                 .requestMatchers(SecurityUtils::isFrameworkInternalRequest).permitAll()
 
                 // Allow all requests by logged in users.
-                .anyRequest().hasAnyAuthority(UserRoles.getAllRoles())
+                //.anyRequest().hasAnyAuthority(UserRoles.getAllRoles())
 
                 // Configure the login page.
                 .and().formLogin().loginPage(LOGIN_URL).permitAll().loginProcessingUrl(LOGIN_PROCESSING_URL)
@@ -88,9 +87,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 // Register the success handler that redirects users to the page they last tried
                 // to access
                 .successHandler(new SavedRequestAwareAuthenticationSuccessHandler())
-
                 // Configure logout
-                .and().logout().logoutSuccessUrl(LOGOUT_SUCCESS_URL);
+                .and().logout().logoutSuccessUrl("/login");
     }
 
 

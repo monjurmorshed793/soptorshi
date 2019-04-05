@@ -66,6 +66,7 @@ public class MainView extends AppLayoutRouterLayout {
         leftMenuBar.add(employeeManagementSubMenu.build());
 
 
+
         AppLayoutBuilder appLayoutBuilder = AppLayoutBuilder
                 .get(Behaviour.LEFT_RESPONSIVE_HYBRID)
                 .withTitle("Soptorshi")
