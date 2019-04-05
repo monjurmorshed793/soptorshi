@@ -20,7 +20,6 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@Service
 public class EmployeeInformationService {
     public VerticalLayout getEmployeeInformation(Employee employee, Boolean editable){
         VerticalLayout content = new VerticalLayout();
@@ -66,7 +65,6 @@ public class EmployeeInformationService {
         TextField name = new TextField();
         name.setValueChangeMode(ValueChangeMode.EAGER);
         Select<EmploymentType> employmentTypeSelect = new Select<>(EmploymentType.ACTIVE, EmploymentType.RESIGNED, EmploymentType.SUSPENDED);
-
 
 
     }
