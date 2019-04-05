@@ -20,7 +20,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class EmployeeInformationService {
+public class EmployeeInformationComponent {
     public VerticalLayout getEmployeeInformation(Employee employee, Boolean editable){
         VerticalLayout content = new VerticalLayout();
         content.setSizeFull();
