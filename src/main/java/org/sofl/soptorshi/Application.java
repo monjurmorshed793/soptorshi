@@ -5,6 +5,7 @@ import org.apache.catalina.Context;
 import org.apache.catalina.session.StandardManager;
 import org.sofl.soptorshi.config.UserRoles;
 import org.sofl.soptorshi.model.*;
+import org.sofl.soptorshi.model.enums.Employeestatus;
 import org.sofl.soptorshi.model.enums.EmploymentType;
 import org.sofl.soptorshi.model.enums.UserStatus;
 import org.sofl.soptorshi.repository.*;
@@ -90,7 +91,8 @@ public class Application extends SpringBootServletInitializer {
                 Employee employee = new Employee();
                 employee.setEmployeeId("11001");
                 employee.setName("Monjur-E-Morshed");
-                employee.setEmploymentType(EmploymentType.ACTIVE);
+                employee.setEmploymentType(EmploymentType.PERMANENT);
+                employee.setEmployeestatus(Employeestatus.ACTIVE);
                 employee.setDesignation(designation);
                 Role role = roleRepository.findByName("ROLE_ADMIN");
                 employee.setRole(Arrays.asList(role));

@@ -1,7 +1,6 @@
 package org.sofl.soptorshi.model;
 
-import org.sofl.soptorshi.model.enums.BloodGroup;
-import org.sofl.soptorshi.model.enums.EmploymentType;
+import org.sofl.soptorshi.model.enums.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -66,7 +65,23 @@ public class Employee implements Serializable {
     @Enumerated(EnumType.ORDINAL)
     private BloodGroup bloodGroup;
 
+    @Enumerated(EnumType.ORDINAL)
+    private MaritalStatus maritalStatus;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Gender gender;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Religion religion;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Employeestatus employeestatus;
+
     private String emergencyContact;
+
+    private LocalDate terminationDate;
+
+    private String reasonOfTermination;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="photo_id")
@@ -244,4 +259,51 @@ public class Employee implements Serializable {
         this.role = role;
     }
 
+    public MaritalStatus getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public void setMaritalStatus(MaritalStatus maritalStatus) {
+        this.maritalStatus = maritalStatus;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public Religion getReligion() {
+        return religion;
+    }
+
+    public void setReligion(Religion religion) {
+        this.religion = religion;
+    }
+
+    public Employeestatus getEmployeestatus() {
+        return employeestatus;
+    }
+
+    public void setEmployeestatus(Employeestatus employeestatus) {
+        this.employeestatus = employeestatus;
+    }
+
+    public LocalDate getTerminationDate() {
+        return terminationDate;
+    }
+
+    public void setTerminationDate(LocalDate terminationDate) {
+        this.terminationDate = terminationDate;
+    }
+
+    public String getReasonOfTermination() {
+        return reasonOfTermination;
+    }
+
+    public void setReasonOfTermination(String reasonOfTermination) {
+        this.reasonOfTermination = reasonOfTermination;
+    }
 }

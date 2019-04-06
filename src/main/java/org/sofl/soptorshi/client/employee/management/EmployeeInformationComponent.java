@@ -55,16 +55,7 @@ public class EmployeeInformationComponent {
 
 
     private void createPersonalInformationLayout(Employee employee, Boolean editable, VerticalLayout content){
-        HorizontalLayout horizontalLayout = new HorizontalLayout();
 
-        FormLayout formLayout = new FormLayout();
-        Binder<Employee> employeeBinder = new Binder<>();
-
-        TextField employeeId = new TextField();
-        employeeId.setValueChangeMode(ValueChangeMode.EAGER);
-        TextField name = new TextField();
-        name.setValueChangeMode(ValueChangeMode.EAGER);
-        Select<EmploymentType> employmentTypeSelect = new Select<>(EmploymentType.ACTIVE, EmploymentType.RESIGNED, EmploymentType.SUSPENDED);
 
 
     }
