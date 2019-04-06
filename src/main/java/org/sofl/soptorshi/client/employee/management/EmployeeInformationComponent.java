@@ -1,3 +1,4 @@
+/*
 package org.sofl.soptorshi.client.employee.management;
 
 import com.vaadin.flow.component.Component;
@@ -61,3 +62,4 @@ public class EmployeeInformationComponent {
     }
 
 }
+*/

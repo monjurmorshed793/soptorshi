@@ -23,25 +23,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@Route("employee-details")
-public class EmployeeDetailsView  extends VerticalLayout implements HasUrlParameter{
-
-    private Employee employee;
+public class EmployeeDetailsView{
 
 
-    @Override
-    public void setParameter(BeforeEvent pBeforeEvent, Object pO) {
 
-    }
-
-    public EmployeeDetailsView(Employee pEmployee) {
-       this.employee = pEmployee;
-        Button button = new Button("Change Employee Name");
-        button.addClickListener(e->pEmployee.setName("XXX"));
-        add(button);
-    }
-
-    public Component getComponent(){
-        return getComponent();
-    }
 }

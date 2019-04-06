@@ -53,9 +53,9 @@ public class EmployeeView extends VerticalLayout {
         employeeGrid.addColumn(Employee::getName).setHeader("Employee Name");
         employeeGrid.addColumn(e->e.getDepartment()==null?"": e.getDepartment().getName()).setHeader("Department");
         employeeGrid.addColumn(e->e.getDesignation()!=null?e.getDesignation().getName():"").setHeader("Designation");
-        employeeGrid.addItemClickListener(event->{
+        /*employeeGrid.addItemClickListener(event->{
            getUI().ifPresent(e->e.navigate(EmployeeManagementView.class, event.getItem().getEmployeeId()));
-        });
+        });*/
         return employeeGrid;
     }
 }

@@ -17,6 +17,7 @@ import org.sofl.soptorshi.model.Department;
 import org.sofl.soptorshi.repository.DepartmentRepository;
 import org.sofl.soptorshi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Role;
 import org.springframework.security.access.annotation.Secured;
 import org.vaadin.crudui.crud.CrudListener;
 import org.vaadin.crudui.crud.CrudOperation;
@@ -30,6 +31,7 @@ import java.util.List;
 
 @Route(value = "department", layout = MainView.class)
 @UIScope
+
 public class DepartmentView extends VerticalLayout implements CrudListener<Department> {
     private DepartmentRepository departmentRepository;
     private Tabs tabSheet = new Tabs();
