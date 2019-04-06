@@ -1,5 +1,8 @@
 package org.sofl.soptorshi.model;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -16,11 +19,14 @@ public class EmployeeAcademicInformation {
     private String nameOfDegree;
     private String boardOrUniversity;
     private Number passingYear;
+
+    @OneToMany
     @JoinTable(
             name="academic_attachment_map",
             joinColumns = {@JoinColumn(name="academic_information_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "attachment_id", referencedColumnName = "id")}
     )
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Attachment> attachmentList;
 
     public EmployeeAcademicInformation(){
