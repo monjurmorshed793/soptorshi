@@ -61,7 +61,6 @@ public class MainView extends AppLayoutRouterLayout {
                 .get("Employee Management", VaadinIcon.GROUP.create());
 
         employeeManagementSubMenu.add(new LeftNavigationComponent("Employee List", VaadinIcon.BULLETS.create(), EmployeeView.class));
-        employeeManagementSubMenu.add(new LeftNavigationComponent("Employee Details", VaadinIcon.USER.create(), EmployeeDetailsView.class));
 
         leftMenuBar.add(employeeManagementSubMenu.build());
         leftMenuBar.add("Logout", VaadinIcon.SIGN_OUT.create(), LogoutView.class);
