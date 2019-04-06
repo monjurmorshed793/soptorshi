@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-    @Cacheable(value = "employee", key = "#employeeId")
+//    @Cacheable(value = "employee", key = "#employeeId")
     Employee findByEmployeeId(String employeeId);
 
 }
