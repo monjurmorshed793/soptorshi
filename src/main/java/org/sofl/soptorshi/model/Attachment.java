@@ -6,10 +6,16 @@ import javax.persistence.*;
 @Table(name = "attachment")
 public class Attachment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fileName;
     private String path;
+    @ManyToOne
+    private AcademicInformation academicInformation;
+    @ManyToOne
+    private TrainingInformation trainingInformation;
+    @ManyToOne
+    private ExperienceInformation experienceInformation;
 
     public Attachment(){
 
@@ -42,6 +48,30 @@ public class Attachment {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public AcademicInformation getAcademicInformation() {
+        return academicInformation;
+    }
+
+    public void setAcademicInformation(AcademicInformation academicInformation) {
+        this.academicInformation = academicInformation;
+    }
+
+    public TrainingInformation getTrainingInformation() {
+        return trainingInformation;
+    }
+
+    public void setTrainingInformation(TrainingInformation trainingInformation) {
+        this.trainingInformation = trainingInformation;
+    }
+
+    public ExperienceInformation getExperienceInformation() {
+        return experienceInformation;
+    }
+
+    public void setExperienceInformation(ExperienceInformation experienceInformation) {
+        this.experienceInformation = experienceInformation;
     }
 
     @Override

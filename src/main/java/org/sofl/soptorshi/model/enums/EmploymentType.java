@@ -1,7 +1,5 @@
 package org.sofl.soptorshi.model.enums;
 
 public enum EmploymentType {
-    ACTIVE,
-    RESIGNED,
-    SUSPENDED
+    PERMANENT, TEMPORARY, ADHOC, PART_TIME
 }

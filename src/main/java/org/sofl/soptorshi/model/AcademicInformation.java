@@ -2,35 +2,41 @@ package org.sofl.soptorshi.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "academic_information")
-public class EmployeeAcademicInformation {
+public class AcademicInformation {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="employee_id")
+    @ManyToOne
     private Employee employee;
     private String nameOfDegree;
     private String boardOrUniversity;
     private Number passingYear;
-    @JoinTable(
-            name="academic_attachment_map",
-            joinColumns = {@JoinColumn(name="academic_information_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "attachment_id", referencedColumnName = "id")}
-    )
-    private List<Attachment> attachmentList;
+    private String groupOrDepartment;
+    @OneToMany(mappedBy = "academicInformation")
+    private Set<Attachment> attachmentList = new HashSet<>();
 
-    public EmployeeAcademicInformation(){
+    public AcademicInformation(){
 
     }
 
-    public EmployeeAcademicInformation(String nameOfDegree, String boardOrUniversity, Number passingYear) {
+    public AcademicInformation(String nameOfDegree, String boardOrUniversity, Number passingYear) {
         this.nameOfDegree = nameOfDegree;
         this.boardOrUniversity = boardOrUniversity;
         this.passingYear = passingYear;
+    }
+
+    public String getGroupOrDepartment() {
+        return groupOrDepartment;
+    }
+
+    public void setGroupOrDepartment(String groupOrDepartment) {
+        this.groupOrDepartment = groupOrDepartment;
     }
 
     public Employee getEmployee() {
@@ -41,11 +47,11 @@ public class EmployeeAcademicInformation {
         this.employee = employee;
     }
 
-    public List<Attachment> getAttachmentList() {
+    public Set<Attachment> getAttachmentList() {
         return attachmentList;
     }
 
-    public void setAttachmentList(List<Attachment> attachmentList) {
+    public void setAttachmentList(Set<Attachment> attachmentList) {
         this.attachmentList = attachmentList;
     }
 
@@ -83,7 +89,7 @@ public class EmployeeAcademicInformation {
 
     @Override
     public String toString() {
-        return "EmployeeAcademicInformation{" +
+        return "AcademicInformation{" +
                 "id=" + id +
                 ", nameOfDegree='" + nameOfDegree + '\'' +
                 ", boardOrUniversity='" + boardOrUniversity + '\'' +

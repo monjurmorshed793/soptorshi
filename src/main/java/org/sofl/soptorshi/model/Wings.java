@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Table(name = "wings")
 public class Wings implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
