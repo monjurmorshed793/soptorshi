@@ -4,11 +4,14 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Text;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.page.History;
 import com.vaadin.flow.component.tabs.Tab;
 import com.vaadin.flow.component.tabs.Tabs;
+import com.vaadin.flow.component.textfield.TextField;
+import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.router.BeforeEvent;
 import com.vaadin.flow.router.HasUrlParameter;
 import com.vaadin.flow.router.OptionalParameter;
@@ -103,7 +106,14 @@ public class EmployeeManagementView extends VerticalLayout implements HasUrlPara
     }
 
     private void createPersonalInformationSection(VerticalLayout content){
-        content.add(new Text("In Personal Information Section"));
+        FormLayout personalInformationForm = new FormLayout();
+        Binder<Employee> binder = new Binder<>();
+
+        TextField employeeId = new TextField();
+        TextField name = new TextField();
+        
+
+
     }
 
     private void createAcademicInformationSection(VerticalLayout content){
