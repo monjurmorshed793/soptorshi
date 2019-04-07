@@ -30,6 +30,7 @@ public class EmployeeView extends VerticalLayout {
         HorizontalLayout buttonContainer = new HorizontalLayout();
         Button addBtn = new Button("Add New Employee");
         addBtn.setIcon(VaadinIcon.PLUS.create());
+        addBtn.addClickListener(e->goToEmployeeDetailView());
         buttonContainer.add(addBtn);
 
         add(buttonContainer);
@@ -57,5 +58,9 @@ public class EmployeeView extends VerticalLayout {
            getUI().ifPresent(e->e.navigate(EmployeeManagementView.class, event.getItem().getEmployeeId()));
         });*/
         return employeeGrid;
+    }
+
+    private void goToEmployeeDetailView(){
+        getUI().get().navigate(EmployeeManagementView.class);
     }
 }

@@ -31,7 +31,6 @@ import java.util.List;
 
 @Route(value = "department", layout = MainView.class)
 @UIScope
-
 public class DepartmentView extends VerticalLayout implements CrudListener<Department> {
     private DepartmentRepository departmentRepository;
     private Tabs tabSheet = new Tabs();

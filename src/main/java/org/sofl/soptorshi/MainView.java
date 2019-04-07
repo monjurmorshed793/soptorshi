@@ -18,14 +18,17 @@ import org.sofl.soptorshi.client.configuration.view.DesignationView;
 import org.sofl.soptorshi.client.configuration.view.LocationView;
 import org.sofl.soptorshi.client.configuration.view.RoleView;
 import org.sofl.soptorshi.client.employee.management.EmployeeDetailsView;
+import org.sofl.soptorshi.client.employee.management.EmployeeManagementView;
 import org.sofl.soptorshi.client.employee.management.EmployeeView;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
+import org.springframework.security.access.annotation.Secured;
 
 @Route
 @PWA(name = "Soptorshi", shortName = "Soptorshi")
+//@Secured("ROLE_ADMIN")
 public class MainView extends AppLayoutRouterLayout {
 
     private DefaultNotificationHolder notifications;
@@ -61,6 +64,7 @@ public class MainView extends AppLayoutRouterLayout {
                 .get("Employee Management", VaadinIcon.GROUP.create());
 
         employeeManagementSubMenu.add(new LeftNavigationComponent("Employee List", VaadinIcon.BULLETS.create(), EmployeeView.class));
+        employeeManagementSubMenu.add(new LeftNavigationComponent("Employee Information", VaadinIcon.CALC_BOOK.create(), EmployeeManagementView.class));
 
         leftMenuBar.add(employeeManagementSubMenu.build());
         leftMenuBar.add("Logout", VaadinIcon.SIGN_OUT.create(), LogoutView.class);
