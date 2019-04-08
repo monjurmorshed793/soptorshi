@@ -62,6 +62,9 @@ public class Employee implements Serializable {
     private String tinNumber;
 
     private String contactNumber;
+
+    private String emailAddress;
+
     @Enumerated(EnumType.ORDINAL)
     private BloodGroup bloodGroup;
 
@@ -97,6 +100,14 @@ public class Employee implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public String getEmployeeId() {
