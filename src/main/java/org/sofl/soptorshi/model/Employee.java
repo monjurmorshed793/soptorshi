@@ -14,16 +14,12 @@ public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
     private String employeeId;
-    @NotNull
     private String name;
-    @NotNull
     @Enumerated(EnumType.ORDINAL)
     private EmploymentType employmentType;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="designation_id")
-    @NotNull
     private Designation designation;
     @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -35,7 +31,6 @@ public class Employee implements Serializable {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="department_id")
-    @NotNull
     private Department department;
 
     private LocalDate joinDate;
@@ -44,7 +39,6 @@ public class Employee implements Serializable {
     private Wings wings;
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="location_id")
-    @NotNull
     private Location location;
 
     private String fatherName;
